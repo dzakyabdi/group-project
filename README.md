@@ -1,3 +1,2 @@
-## Simple Image Classification With Django + TensorFlow    
+## Food Recognition
   
-This application is Using TensorFlow 1.0 + MNIST Fashion Dataset + Django to classify simple e-commerce store items
