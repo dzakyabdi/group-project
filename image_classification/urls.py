@@ -25,5 +25,6 @@ from image_classification import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$',views.index,name='index'),
-    url(r'^result/$', views.result, name = 'answer')
+    url(r'^result/$', views.result, name = 'answer'),
+    path('recipe/<str:nama>/<int:index>', views.recipe_detail, name = 'recipe_detail')
 ]
