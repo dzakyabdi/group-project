@@ -8,44 +8,51 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="background-color: #dfbf9f;">
-            <div class="container">
-              <a class="navbar-brand" href="/">Demo Tensorflow</a>
-            </div>
-          </nav>
-          <div style="padding:50px 0" class="container text-center my-auto">
-            <div class="content">
-              {% if prediksi_title %}
-              <div class="col-md-4 mx-auto my-5">
-                <img class="image-result img-fluid mb-3 " src={% static 'image.png' %} alt="your image" />
-              </div>
-              <h1 style ="text-align: center;top:0;">{{ prediksi_title }} Recipes</h1>
-              <br>
-              <div class="row">
-                {% for hasil in hasil_list.results %}
-                <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card" style="width:250px">
-                    <img class="card-img-top" src={{hasil.image}} alt="">
-                    <div class="card-body">
-                      <h6 class="card-title">{{ hasil.title }}</h6>
-                    </div>
-                    <div class="card-footer">
-                      <a href="{% url 'recipe_detail' prediksi_title  forloop.counter0 %}" class="btn btn-primary" style="background: #999966; border: solid 1px #FFFFFF">Check Details!</a>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="background-color: #dfbf9f;">
+        <div class="container">
+          <a class="navbar-brand" href="/">Demo Tensorflow</a>
         </div>
-    </body>
-    <style>
+    </nav>
+    <div style="padding:50px 0" class="container text-center my-auto">
+    <div class="content">
+        <h1 style ="text-align: center;top:0;">{{ hasil.title }}</h1>
+        <hr>
+        <div class="col-md-4 mx-auto my-5">
+            <img class="image-result img-fluid mb-3" src={{ hasil.image }} alt="your-image" />
+        </div>
+        <hr>
+
+        <div>
+            <div class="card-title" style="text-align: left">
+                <b style="padding-left: 15px;">Ingredients:</b>
+            <hr>
+            <ul>
+                {% for langkah in resep %}
+                    {% for bahan in langkah.ingredients %}
+                        <li style="color: black;">{{ bahan.name }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            </div>
+            <hr>
+            <div class="card-title" style="text-align: left">
+                <b style="padding-left: 15px;">Steps:</b>
+                <hr>
+                <ol>
+                    {% for langkah in resep %}
+                    <li style="color: black; padding-bottom: 10PX;">{{ langkah.step }}</li>
+                    {% endfor %}
+                </ol>
+
+            </div>
+        </div>
+    </div>
+</body>
+<style>
         .image-result {
-            height: auto;
-            width: 500px;
-            bottom: 0;
+            height: 250px;
+            width: auto;
         }
         .image-product {
             height: 125px;
@@ -65,8 +72,9 @@
             background: rgba(236, 228, 228, 0.5); /* Black background with 0.5 opacity */
             color: #bf8040; /* Grey text */
             width: 100%; /* Full width */
-            padding: 30px; /* Some padding */
+            /* padding: 30px; Some padding */
         }
+
 
         td, th {
           border: 2px solid #96C0B7;
@@ -124,12 +132,12 @@
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                
+
                 reader.onload = function(e) {
                     $('#preview').attr('src', e.target.result);
                     $('#preview').removeAttr('hidden');
                 }
-                
+
                 reader.readAsDataURL(input.files[0]);
             }
         }

@@ -1,44 +1,53 @@
 <html>
     <head>
-        <title>TensorFlow Demo</title>
+        <title>Demo Tensorflow Kelompok 2</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap core CSS -->
+        <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="static/css/heroic-features.css" rel="stylesheet">
     </head>
     <body>
-        <div style= "padding: 70px 0 "class="container ">
-                <div class= "bg-image"></div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="background-color: #dfbf9f;">
+            <div class="container">
+            <a class="navbar-brand" href="/">Demo Tensorflow</a>
+            </div>
+        </nav>
 
-            <h1 style="text-align: center">Welcome to Clothe Engginee</h1>
-            <p style="text-align: center">Place to search your clothe in all e-commerce</p>
-            <div class="row">
-                    <div class="card my-4 mx-auto">
-                        <div class="card-body">
-                            <form action="/result/" method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <h5 class="card-title">Insert your clothing image</h5>
-                                <div class="form-group">
-                                    <input required type="file" class="form-control" id="image" name="img" >
-                                </div>
-                                <img style="max-height:200px" hidden class="img-fluid mb-3 " id="preview" src="#" alt="your image" />
-                                <br>
-                                <button class="btn btn-primary" type="submit">Upload</button>
-                            </form>
-                        </div>
+        <!-- Page Content -->
+        <div class="container">
+            <!-- Jumbotron Header -->
+            <header class="jumbotron my-4" style="background-image:url(https://i.pinimg.com/564x/e8/d8/ee/e8d8ee9edece42916aa5851d7fd7bebd.jpg); background-position: center;
+            background-repeat: no-repeat; background-size: cover">
+            <h1 class="display-3" style="font-weight: bold;color: #999966;font-size:50px;">Welcome to Food Recipes</h1>
+            <p class="lead" style="color: #999966;font-weight: bold">You can find your favorite food, enjoy!</p>
+            </header>
+            
+            <div style="padding:50px 0" class="container text-center my-auto">
+                <div class="content">
+                    <h1 style ="text-align: center"> Upload your food image</h1>
+                    <br>
+                    <form action="/result/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <center>
+                    <div class="form-group">
+                        <input required type="file" class="form-control" style="box-sizing: content-box;"id="image" name="img" >
                     </div>
+                    </center>
+                    <img style="max-height:200px" hidden class="img-fluid mb-3 " id="preview" src="#" alt="your image" />
+                    <br>
+                    <button class="btn btn-primary" style="background: #999966; border: solid 1px #FFFFFF"type="submit">Upload</button>
+                </form>
+                </div>
             </div>
         </div>
-        <style>
-            body {
-                /* background-color: #cccccc; */
-                background-image: url("https://cdn.mos.cms.futurecdn.net/6Uq8f3QkaaWACBkGCRp2jk.jpg");
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                }
-        </style>
     </body>
 
     <script>
