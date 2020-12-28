@@ -20,6 +20,39 @@
               <div class="col-md-4 mx-auto my-5">
                 <img class="image-result img-fluid mb-3 " src={% static 'image.png' %} alt="your image" />
               </div>
+              <div align="center";>
+                <a href="/" class="btn btn-primary" style="background: #999966; border: solid 1px #FFFFFF">Find Another Food</a>
+              </div>
+              <h1 style ="text-align: center;top:0;">{{ prediksi_title }} Restaurants</h1>
+              <br>
+            <div class="card-title" align="center">
+              <table>
+                  <tr style="text-align: center">
+                      <th>Restaurant</th>
+                      <th>Rating</th>
+                      <th>Address</th>
+                      <th>Price</th>
+
+                  </tr>
+                      {% for resto in restaurants %}
+                          <tr>
+                              <td>
+                                  {{ resto.0 }}
+                              </td>
+                              <td style="text-align: center;">
+                                {{ resto.1 }}
+                            </td>
+                            <td>
+                              {{ resto.2 }}
+                          </td>
+                          <td>
+                            {{ resto.3 }}
+                        </td>
+                          </tr>
+                          {% endfor %}
+              </table>
+              </div>
+              <br>
               <h1 style ="text-align: center;top:0;">{{ prediksi_title }} Recipes</h1>
               <br>
               <div class="row">
@@ -69,12 +102,12 @@
         }
 
         td, th {
-          border: 2px solid #96C0B7;
+          border: 2px solid #dbbea1;
           padding: 8px;
         }
 
         th {
-          background-color: #5386E4;
+          background-color: #bf8040;
           color: white;
         }
 
